@@ -1,6 +1,8 @@
 ﻿using Silk.NET.Input;
 using Silk.NET.Maths;
 using Silk.NET.Windowing;
+using Silk.NET.OpenGL;
+using System.Drawing;
 
 namespace HelloSilk
 {
@@ -8,6 +10,7 @@ namespace HelloSilk
     {
         private static IWindow _window;
         private static IInputContext _input;
+        private static GL _gl;
 
         public static void Main(params string[] args)
         {
@@ -25,6 +28,8 @@ namespace HelloSilk
 
         private static void OnWindowLoad()
         {
+            _gl = _window.CreateOpenGL();
+            _gl.ClearColor(Color.Black);
             _input = _window.CreateInput();
 
             for (int i = 0; i < _input.Keyboards.Count; i++)
@@ -35,7 +40,7 @@ namespace HelloSilk
 
         private static void OnWindowOnRender(double deltaTime)
         {
-            
+            _gl.Clear(ClearBufferMask.ColorBufferBit);
         }
 
         private static void KeyDown(IKeyboard keyboard, Key key, int keyCode) {
