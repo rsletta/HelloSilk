@@ -21,7 +21,7 @@ namespace HelloSilk
 
             _window.Load += OnWindowLoad;
             _window.Update += OnUpdate;
-            _window.Render += OnWindowOnRender;
+            _window.Render += OnWindowRender;
 
             _window.Run();
         }
@@ -38,7 +38,7 @@ namespace HelloSilk
 
         private static void OnUpdate(double deltaTime) { }
 
-        private static void OnWindowOnRender(double deltaTime)
+        private static void OnWindowRender(double deltaTime)
         {
             _gl.Clear(ClearBufferMask.ColorBufferBit);
         }
